@@ -13,9 +13,13 @@ class _HomePageState extends State<HomePage> {
         title: Text('Alerta Municipio'),
         actions:<Widget>[
         IconButton(
-            icon: Icon(Icons.mode_outlined),
+            icon: Icon(Icons.mode_outlined,color: Colors.green,),
             onPressed: ()=> Navigator.pushNamed(context, 'modify'),
-          ),   
+          ),
+        IconButton(
+            icon: Icon(Icons.warning_amber_rounded,color: Colors.red,),
+            onPressed: ()=> Navigator.pushNamed(context, 'zone')
+          )    
         ],
       ),
       floatingActionButton: _floatinbutton(context),
