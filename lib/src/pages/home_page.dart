@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _floatinbutton(BuildContext context){
     return FloatingActionButton(
-      onPressed: ()=>Navigator.pushNamed(context,'add'),
+      onPressed: ()=>Navigator.pushNamed(context,'maps'),
       child: Icon(Icons.add_circle_sharp),
     );
   }
