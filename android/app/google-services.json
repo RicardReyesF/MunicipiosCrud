@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "423282818916",
+    "firebase_url": "https://municipiocrud.firebaseio.com",
+    "project_id": "municipiocrud",
+    "storage_bucket": "municipiocrud.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423282818916:android:c17b4c1cacc68fa4394471",
+        "android_client_info": {
+          "package_name": "com.example.municipios_crud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423282818916-25hnu2hlcqvqsms0l7qt2pguopjq570e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsp6DJUaznYM0wzAjtQMBGpX3SkeRlMSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423282818916-25hnu2hlcqvqsms0l7qt2pguopjq570e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

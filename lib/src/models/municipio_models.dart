@@ -56,7 +56,6 @@ class MunicioModel {
         final lat=double.parse(lonlat[0]);
         final long =double.parse(lonlat[1]);
         return LatLng(lat,long);
-
     }
 }
     

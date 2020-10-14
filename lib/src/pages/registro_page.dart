@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:municipios_crud/src/bloc/provider.dart';
+import 'package:municipios_crud/src/providers/usuario_provider.dart';
 
-class LoginPage extends StatefulWidget {
-
+class RegistroPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegistroPageState createState() => _RegistroPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegistroPageState extends State<RegistroPage> {
+  final usuarioProvider= new  UserProvider();
   @override
   Widget build(BuildContext context) {
+    
      return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -65,8 +67,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
 
          FlatButton(
-          onPressed: ()=> Navigator.pushReplacementNamed(context,'registro'), 
-          child: Text('Registrate')
+          onPressed: ()=> Navigator.pushReplacementNamed(context,'login'), 
+          child: Text('¿Ya tienes cuenta?')
         )
       ],
     ),
@@ -140,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
         return RaisedButton(
           child: Container(
             padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
-            child: Text('Ingresar'),
+            child: Text('Registrate'),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0)
@@ -156,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _login(LoginBloc bloc, BuildContext context) {
 
-    Navigator.pushReplacementNamed(context, 'home');
+    usuarioProvider.nuevoUsuario(bloc.email,bloc.password);
 
   }
 

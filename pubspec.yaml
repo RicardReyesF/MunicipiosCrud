@@ -30,7 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_map: ^0.10.1+1
   path_provider:
-  google_maps_flutter: ^1.0.2
+  rxdart: ^0.24.1
+  firebase_database: ^4.1.1
+  http:
 
 dev_dependencies:
   flutter_test:
