@@ -10,6 +10,7 @@ class MapaPage extends StatefulWidget {
 
 class _MapaPageState extends State<MapaPage> {
 CameraPosition _initialPosition = CameraPosition(target: LatLng(19.294099,-99.701254),zoom: 11.0);
+List<Marker> _mymarker=[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +21,30 @@ CameraPosition _initialPosition = CameraPosition(target: LatLng(19.294099,-99.70
         body: Stack(
           children: <Widget>[
             GoogleMap(   
+              markers: Set.from(_mymarker),
               mapType: MapType.normal, 
               onMapCreated: (GoogleMapController controller) {},
               initialCameraPosition: _initialPosition,
+              onTap: _handelTap,
               
             ),
           ],
         )
       );
-  } 
+  
+
+    }
+      _handelTap(LatLng tappedPoint){
+        setState(() {
+          print(tappedPoint);
+          _mymarker.add(Marker(
+            markerId: MarkerId(tappedPoint.toString()), 
+            position: tappedPoint
+          )
+          );
+        });
+      }
+
+      
+  
 }
