@@ -33,6 +33,7 @@ dependencies:
   rxdart: ^0.24.1
   firebase_database: ^4.1.1
   http:
+  google_maps_flutter: ^1.0.3
 
 dev_dependencies:
   flutter_test:

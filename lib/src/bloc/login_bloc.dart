@@ -20,6 +20,10 @@ class LoginBloc with Validators{
   Stream<String> get emailStream       => _controllerEmail.stream.transform(validarEmail);
   Stream<String> get passwordStream    => _controllerPassword.stream.transform(validarPassword);
 
+  // Obtener el último valor ingresado a los streams
+  String get email    => _controllerEmail.value;
+  String get password => _controllerPassword.value;
+  
   //Cerrar
 
   dispose(){

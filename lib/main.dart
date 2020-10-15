@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return Provider(
           child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'login',
+        initialRoute: 'maps',
         routes: {
           'home'        : (BuildContext context) => HomePage(),
           'add'         : (BuildContext context) => AddMunPage(),
