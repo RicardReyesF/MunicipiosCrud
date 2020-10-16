@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:municipios_crud/src/bloc/provider.dart';
 import 'package:municipios_crud/src/pages/add_mun_page.dart';
 import 'package:municipios_crud/src/pages/home_page.dart';
+import 'package:municipios_crud/src/pages/home_user_page.dart';
 import 'package:municipios_crud/src/pages/login_page.dart';
 import 'package:municipios_crud/src/pages/maps_page.dart';
 import 'package:municipios_crud/src/pages/modify_page.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return Provider(
           child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'maps',
+        initialRoute: 'login',
         routes: {
           'home'        : (BuildContext context) => HomePage(),
           'add'         : (BuildContext context) => AddMunPage(),
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           'maps'        : (BuildContext context) => MapaPage(),
           'login'       : (BuildContext context) => LoginPage(),
           'registro'    : (BuildContext context) => RegistroPage(),
+          'homeUser'    : (BuildContext context) => HomeUser()
         },
       ),
     );

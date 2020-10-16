@@ -34,6 +34,7 @@ dependencies:
   firebase_database: ^4.1.1
   http:
   google_maps_flutter: ^1.0.3
+  flutter_speed_dial: ^1.2.5
 
 dev_dependencies:
   flutter_test:

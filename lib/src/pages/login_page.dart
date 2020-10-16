@@ -156,7 +156,16 @@ class _LoginPageState extends State<LoginPage> {
 
   _login(LoginBloc bloc, BuildContext context) {
 
-    Navigator.pushReplacementNamed(context, 'home');
+    if(bloc.email == 'admin@admin.com' && bloc.password == '123456'){
+      Navigator.pushReplacementNamed(context, 'home');
+    }else {
+      if(bloc.email == 'user@user.com' && bloc.password == '123456'){
+        Navigator.pushReplacementNamed(context, 'homeUser');
+
+      }
+    }
+
+    
 
   }
 

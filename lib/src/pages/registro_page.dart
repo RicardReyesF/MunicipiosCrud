@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:municipios_crud/src/bloc/provider.dart';
-import 'package:municipios_crud/src/providers/usuario_provider.dart';
+import 'package:municipios_crud/src/providers/user_provider.dart';
+
 
 class RegistroPage extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class RegistroPage extends StatefulWidget {
 }
 
 class _RegistroPageState extends State<RegistroPage> {
-  final usuarioProvider= new  UserProvider();
+  final usuarioProvider= new  UsuariosProvider();
   @override
   Widget build(BuildContext context) {
     
@@ -157,8 +158,6 @@ class _RegistroPageState extends State<RegistroPage> {
   }
 
   _login(LoginBloc bloc, BuildContext context) {
-
-    usuarioProvider.nuevoUsuario(bloc.email,bloc.password);
 
   }
 
