@@ -5,10 +5,14 @@ import 'package:municipios_crud/src/pages/home_page.dart';
 import 'package:municipios_crud/src/pages/home_user_page.dart';
 import 'package:municipios_crud/src/pages/login_page.dart';
 import 'package:municipios_crud/src/pages/maps_page.dart';
+import 'package:municipios_crud/src/pages/maps_page_modi.dart';
+import 'package:municipios_crud/src/pages/maps_page_view.dart';
 import 'package:municipios_crud/src/pages/modify_page.dart';
 import 'package:municipios_crud/src/pages/add_zone_page.dart';
 import 'package:municipios_crud/src/pages/modify_page_zone.dart';
+import 'package:municipios_crud/src/pages/mody_mun_page.dart';
 import 'package:municipios_crud/src/pages/registro_page.dart';
+import 'package:municipios_crud/src/pages/update.dart';
 import 'package:municipios_crud/src/pages/zone_page.dart';
  
 void main() => runApp(MyApp());
@@ -30,7 +34,11 @@ class MyApp extends StatelessWidget {
           'maps'        : (BuildContext context) => MapaPage(),
           'login'       : (BuildContext context) => LoginPage(),
           'registro'    : (BuildContext context) => RegistroPage(),
-          'homeUser'    : (BuildContext context) => HomeUser()
+          'homeUser'    : (BuildContext context) => HomeUser(),
+          'mapsView'    : (BuildContext context) => MapaPageView(),
+          'mapsMody'    : (BuildContext context) => MapaPageM(),
+          'modyMun'     : (BuildContext context) => ModMunPage(),
+          'upDate'      : (BuildContext context) => UpPage(),
         },
       ),
     );

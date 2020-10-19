@@ -68,9 +68,11 @@ class _HomePageState extends State<HomePage> {
         municioProvider.borrarMun(municioModel.id);
       } ,
           child: ListTile(
+           onLongPress: () => Navigator.pushNamed(context, 'modyMun', arguments: municioModel), 
             title: Text('${municioModel.nomMun}-${municioModel.sigMun}'),
             subtitle: Text('${municioModel.id}-${municioModel.mainAsp}'),
-            onTap: ()=> Navigator.pushNamed(context,'maps',arguments: municioModel)
+            onTap: ()=> Navigator.pushNamed(context,'mapsView',arguments: municioModel),
+
       ),
     );
   }

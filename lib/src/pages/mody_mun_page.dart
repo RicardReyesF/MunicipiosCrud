@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:municipios_crud/src/models/municipio_models.dart';
 import 'package:municipios_crud/src/providers/mun_provider.dart';
 
-class AddMunPage extends StatefulWidget {
+class ModMunPage extends StatefulWidget {
   @override
-  _AddMunPageState createState() => _AddMunPageState();
+  _ModMunPageState createState() => _ModMunPageState();
 }
 
-class _AddMunPageState extends State<AddMunPage> {
+class _ModMunPageState extends State<ModMunPage> {
   final formKey = GlobalKey<FormState>();
   final munProvider= new MunProvider();
   MunicioModel municioModel= new MunicioModel();
@@ -35,7 +35,7 @@ class _AddMunPageState extends State<AddMunPage> {
         child: Column(
           children: [
             SizedBox(height:70.0,),
-            _claveIEGEM(),
+            //_claveIEGEM(),
             SizedBox(height:70.0,),
             _municipio(),
             SizedBox(height:70.0,),
@@ -63,7 +63,7 @@ Widget _claveIEGEM(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.id,
       decoration: InputDecoration(
         counterText: 'Clave IGECEM',
         icon: Icon(Icons.vpn_key_outlined)
@@ -84,7 +84,7 @@ Widget _municipio(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.nomMun,
       decoration: InputDecoration(
         icon: Icon(Icons.home),
         counterText: 'Municipio'
@@ -105,7 +105,7 @@ Widget _significado(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.sigMun,
       decoration: InputDecoration(
         icon: Icon(Icons.local_library),
         counterText: 'Significado'
@@ -126,7 +126,7 @@ Widget _cabeceraM(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.cabeceraMun,
       decoration: InputDecoration(
         icon: Icon(Icons.map_sharp),
         counterText: 'Cabecera Municipal'
@@ -147,7 +147,7 @@ Widget _superficie(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.superficie,
       decoration: InputDecoration(
         icon: Icon(Icons.nature_people),
         counterText: 'Superficie'
@@ -168,7 +168,7 @@ Widget _altitud(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.altitud,
       decoration: InputDecoration(
         icon: Icon(Icons.landscape),
         counterText: 'Altitud'
@@ -189,7 +189,7 @@ Widget _clima(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.clima,
       decoration: InputDecoration(
         icon: Icon(Icons.landscape),
         counterText: 'Clima'
@@ -213,7 +213,7 @@ Widget _principalesAsp(){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 45.0),
     child: TextFormField(
-      initialValue: '',
+      initialValue: municioModel.mainAsp,
       decoration: InputDecoration(
         icon: Icon(Icons.priority_high_rounded),
         counterText: 'Principales Aspctos'
@@ -234,8 +234,8 @@ Widget _principalesAsp(){
  Widget _submit(BuildContext context){
    return RaisedButton.icon(
       onPressed: _submit1,
-      icon: Icon(Icons.save_sharp,color: Colors.white,),
-      label: Text('Guardar',style: TextStyle(color: Colors.white),),
+      icon: Icon(Icons.arrow_forward_rounded,color: Colors.white,),
+      label: Text('Siguiente',style: TextStyle(color: Colors.white),),
       color: Colors.blue,
       shape: RoundedRectangleBorder() ,
     );
@@ -247,9 +247,8 @@ void _submit1(){
     print('Todo ok');
 
     formKey.currentState.save();
-   munProvider.editarMun(municioModel);
    
-   Navigator.popAndPushNamed(context, 'home');
+   Navigator.pushNamed(context, 'mapsMody',arguments: municioModel);
  }
 }
 

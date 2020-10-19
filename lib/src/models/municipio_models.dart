@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:latlong/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 MunicioModel municioModelFromJson(String str) => MunicioModel.fromJson(json.decode(str));
 
@@ -52,7 +52,7 @@ class MunicioModel {
         "localizacion": localizacion,
     };
     LatLng getLonLat(){
-      final lonlat=localizacion.substring(4).split(',');
+      final lonlat=localizacion.split(",");
         final lat=double.parse(lonlat[0]);
         final long =double.parse(lonlat[1]);
         return LatLng(lat,long);

@@ -1,46 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:municipios_crud/src/bloc/provider.dart';
 import 'package:municipios_crud/src/models/municipio_models.dart';
+import 'package:municipios_crud/src/models/zona_models.dart';
 import 'package:municipios_crud/src/providers/mun_provider.dart';
-import 'package:municipios_crud/src/providers/user_provider.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:municipios_crud/src/providers/zone_provider.dart';
 
-
-class RegistroPage extends StatefulWidget {
+class UpPage extends StatefulWidget {
   @override
-  _RegistroPageState createState() => _RegistroPageState();
+  _UpPageState createState() => _UpPageState();
 }
 
-class _RegistroPageState extends State<RegistroPage> {
-  final usuarioProvider= new  UsuariosProvider();
-  MunicioModel municioModel = new MunicioModel();
-  final munProvider= new MunProvider();
-  final DBRef = FirebaseDatabase().reference();
+class _UpPageState extends State<UpPage> {
+  final formKey = GlobalKey<FormState>();
+  final munProvider = new MunProvider();
+  MunicioModel municioModel= MunicioModel();
   @override
   Widget build(BuildContext context) {
     
-     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          _submit(context),
-        ],
-      )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Zona de Riesgo'),
+      ),
+      body:SingleChildScrollView(
+        child: Form(
+          key: formKey,  
+          child: Column(
+            children: [
+              SizedBox(height:70.0,),
+              //_claveIEGEM(),
+              SizedBox(height:70.0,),
+              //_desastre(),
+              SizedBox(height:70.0,),
+              _submit(context)
+            ],
+          ),   
+        ),
+      ),
     );
-    
   }
+
+  Widget _claveIEGEM(){
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 45.0),
+    child: TextFormField(
+      decoration: InputDecoration(
+        counterText: 'Clave IGECEM',
+        icon: Icon(Icons.vpn_key_outlined)
+      ),
+      validator: (value){
+        if (value.length < 3) {
+          return 'Clave corta';
+        } else {
+          return null;
+        }
+      },
+      //nSaved: (value ) => zonaModel.claveIg=value,
+    ),
+  );
+}
+
+  Widget _desastre(){
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 45.0),
+    child: TextFormField(
+      decoration: InputDecoration(
+        counterText: 'Desastre',
+        icon: Icon(Icons.whatshot)
+      ),
+      validator: (value){
+        if (value.length < 3) {
+          return 'Texto cort0';
+        } else {
+          return null;
+        }
+      },
+      //onSaved: (value) => zonaModel.dNat=value,
+    ),
+  );
+}
 
   Widget _submit(BuildContext context){
    return RaisedButton.icon(
-      onPressed: _submit1,
+      onPressed: _submit1 ,
       icon: Icon(Icons.save_sharp,color: Colors.white,),
       label: Text('Guardar',style: TextStyle(color: Colors.white),),
       color: Colors.blue,
       shape: RoundedRectangleBorder() ,
     );
  }
-_submit1(){
-//municioModel.id='023'; municioModel.nomMun='ACAMBAY'; municioModel.sigMun='PEÑASCOS DE DIOS'; municioModel.cabeceraMun='ACAMBAY'; municioModel.superficie='492.13'; municioModel.altitud='2,555'; municioModel.mainAsp='PRESA HUAPANGO CON UNA CAPACIDAD DE: 121,300,000'; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.9515392,-99.8420917'; 
-//municioModel.id='080'; municioModel.nomMun='ACOLMAN'; municioModel.sigMun='HOMBRE CON MANO O BRAZO'; municioModel.cabeceraMun='ACOLMAN DE NETZAHUALCOYOTL'; municioModel.superficie='86.88'; municioModel.altitud='2,255'; municioModel.mainAsp=''; municioModel.clima='SECO'; municioModel.localizacion='19.6392442,-98.9161984'; 
+
+ void _submit1(){
+   
+//municioModel.id='023'; municioModel.nomMun='ACAMBAY'; municioModel.sigMun='PEÑASCOS DE DIOS'; municioModel.cabeceraMun='ACAMBAY'; municioModel.superficie='492.13'; municioModel.altitud='2,555'; municioModel.mainAsp='PRESA HUAPANGO CON UNA CAPACIDAD DE: 121,300,000'; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.9515392,-99.8420917';
+//municioModel.id='080'; municioModel.nomMun='ACOLMAN'; municioModel.sigMun='HOMBRE CON MANO O BRAZO'; municioModel.cabeceraMun='ACOLMAN DE NETZAHUALCOYOTL'; municioModel.superficie='86.88'; municioModel.altitud='2,255'; municioModel.mainAsp=''; municioModel.clima='SECO'; municioModel.localizacion='19.6392442,-98.9161984';
 //municioModel.id='032'; municioModel.nomMun='ACULCO'; municioModel.sigMun='EN EL AGUA TORCIDA'; municioModel.cabeceraMun='ACULCO DE ESPINOZA'; municioModel.superficie='465.70'; municioModel.altitud='2,440'; municioModel.mainAsp='PRESA HUAPANGO CON UNA CAPACIDAD DE: 121,300,000'; municioModel.clima='TEMPLADO'; municioModel.localizacion='20.1360087,-99.9684931'; 
 //municioModel.id='050'; municioModel.nomMun='ALMOLOYA DE ALQUISIRAS'; municioModel.sigMun='LUGAR DONDE MANA EL AGUA'; municioModel.cabeceraMun='ALMOLOYA DE ALQUISIRAS'; municioModel.superficie='167.38'; municioModel.altitud='1,970'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='18.8665041,-99.9001158'; 
 //municioModel.id='102'; municioModel.nomMun='ALMOLOYA DE JUAREZ'; municioModel.sigMun='LUGAR DONDE MANA LA FUENTE DE AGUA'; municioModel.cabeceraMun='VILLA DE ALMOLOYA DE JUAREZ'; municioModel.superficie='483.77'; municioModel.altitud='2,605'; municioModel.mainAsp='RIO LERMA CON LONGITUD DE: 177.90'; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.3699825,-99.7626563'; 
@@ -70,7 +121,7 @@ _submit1(){
 //municioModel.id='013'; municioModel.nomMun='COCOTITLAN'; municioModel.sigMun='LUGAR DE TORTOLAS'; municioModel.cabeceraMun='COCOTITLAN'; municioModel.superficie='10.45'; municioModel.altitud='2,260'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.2326171,-98.8729656'; 
 //municioModel.id='002'; municioModel.nomMun='COYOTEPEC'; municioModel.sigMun='LUGAR DE LOS COYOTES'; municioModel.cabeceraMun='COYOTEPEC'; municioModel.superficie='12.30'; municioModel.altitud='2,305'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.7747569,-99.2456027'; 
 //municioModel.id='001'; municioModel.nomMun='CUAUTITLAN'; municioModel.sigMun='LUGAR ENTRE LOS ARBOLES'; municioModel.cabeceraMun='CUAUTITLAN'; municioModel.superficie='37.30'; municioModel.altitud='2,250'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.6685386,-99.2012028'; 
-//municioModel.id='121'; municioModel.nomMun='CUAUTITLAN IZCALLI'; municioModel.sigMun='TU CASA ENTRE LOS ARBOLES'; municioModel.cabeceraMun='CUAUTITLAN IZCALLI'; municioModel.superficie='109.92'; municioModel.altitud='2,285'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.6578487,-99.2958127'; 
+municioModel.id='121'; municioModel.nomMun='CUAUTITLAN IZCALLI'; municioModel.sigMun='TU CASA ENTRE LOS ARBOLES'; municioModel.cabeceraMun='CUAUTITLAN IZCALLI'; municioModel.superficie='109.92'; municioModel.altitud='2,285'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.6578487,-99.2958127'; 
 //municioModel.id='109'; municioModel.nomMun='DONATO GUERRA'; municioModel.sigMun='CERRO DEL MALACATE'; municioModel.cabeceraMun='DONATO GUERRA'; municioModel.superficie='192.19'; municioModel.altitud='2,200'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.3110424,-100.1461805'; 
 //municioModel.id='094'; municioModel.nomMun='ECATEPEC DE MORELOS'; municioModel.sigMun='DIOS DEL AIRE'; municioModel.cabeceraMun='ECATEPEC DE MORELOS'; municioModel.superficie='155.49'; municioModel.altitud='2,251'; municioModel.mainAsp='FORMA PARTE DE LOS MUNICIPIOS MAS POBLADOS CON 1,656,107 DE HABITANTES'; municioModel.clima='SECO'; municioModel.localizacion='19.5720072,-99.107746'; 
 //municioModel.id='014'; municioModel.nomMun='ECATZINGO'; municioModel.sigMun='LUGAR CONSAGRADO AL VIENTO'; municioModel.cabeceraMun='ECATZINGO DE HIDALGO'; municioModel.superficie='54.71'; municioModel.altitud='2,400'; municioModel.mainAsp='VOLCAN POPOCATEPETL CON ALTITUD DE: 5,500 Y VOLCAN IZTACCIHUATL CON ALTITUD DE: 5,285'; municioModel.clima='TEMPLADO'; municioModel.localizacion='8.9683998,-98.7678765'; 
@@ -160,8 +211,11 @@ _submit1(){
 //municioModel.id='072'; municioModel.nomMun='XALATLACO'; municioModel.sigMun='LUGAR DE AGUA SOBRE LA ARENA EN LA BARRANCA'; municioModel.cabeceraMun='XALATLACO'; municioModel.superficie='93.23'; municioModel.altitud='2,770'; municioModel.mainAsp=''; municioModel.clima='SEMIFRIO'; municioModel.localizacion='19.1797825,-99.4287866'; 
 //municioModel.id='042'; municioModel.nomMun='XONACATLAN'; municioModel.sigMun='ENTRE LAS CEBOLLAS'; municioModel.cabeceraMun='XONACATLAN'; municioModel.superficie='32.87'; municioModel.altitud='2,570'; municioModel.mainAsp=''; municioModel.clima='TEMPLADO'; municioModel.localizacion='19.4096939,-99.5409503'; 
 //municioModel.id='114'; municioModel.nomMun='ZACAZONAPAN'; municioModel.sigMun='EN AGUA DE CESPEDES'; municioModel.cabeceraMun='ZACAZONAPAN'; municioModel.superficie='67.14'; municioModel.altitud='1,360'; municioModel.mainAsp=''; municioModel.clima='CALIDO'; municioModel.localizacion='19.074275,-100.2637905'; 
- 
- 
- munProvider.crearMun(municioModel);
-}
+
+      munProvider.editarMun(municioModel);
+    
+   
+   
+ }
+
 }

@@ -2,15 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:municipios_crud/src/models/municipio_models.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:municipios_crud/src/providers/mun_provider.dart';
 
 
-class MapaPage extends StatefulWidget {
+class MapaPageM extends StatefulWidget {
   @override
-  _MapaPageState createState() => _MapaPageState();
+  _MapaPageMState createState() => _MapaPageMState();
 }
 
-class _MapaPageState extends State<MapaPage> {
-  
+class _MapaPageMState extends State<MapaPageM> {
+final munProvider= new MunProvider(); 
 MunicioModel municioModel = new MunicioModel();
 List<Marker> _mymarker=[];
 
@@ -23,7 +24,7 @@ List<Marker> _mymarker=[];
       print(municioModel.getLonLat());
       print(municioModel.localizacion);
     }
-    CameraPosition _initialPosition = CameraPosition(target: LatLng(19.294261,-99.7012547),zoom: 13.0);
+    CameraPosition _initialPosition = CameraPosition(target: municioModel.getLonLat(),zoom: 13.0);
     
     
     return Scaffold(
@@ -33,8 +34,11 @@ List<Marker> _mymarker=[];
            actions: [
 
             IconButton(
-            icon:Icon(Icons.arrow_forward_ios) , 
-            onPressed: ()=>Navigator.pushNamed(context,'add',arguments: municioModel),
+            icon:Icon(Icons.system_update) , 
+            onPressed: (){
+              munProvider.editarMun(municioModel);
+              Navigator.popAndPushNamed(context, 'home');
+            },
             
             )
           ],
@@ -45,7 +49,17 @@ List<Marker> _mymarker=[];
             GoogleMap(   
               markers: Set.from(_mymarker),
               mapType: MapType.normal, 
-              onMapCreated: (GoogleMapController controller) {},
+              onMapCreated: (GoogleMapController controller) {
+                        setState(() {
+         _mymarker.add(
+            Marker(
+               markerId: MarkerId(''),
+               position: municioModel.getLonLat(),
+               
+            )
+         );
+      });
+              },
               initialCameraPosition: _initialPosition,
               onTap: _handelTap,
               
@@ -61,7 +75,9 @@ List<Marker> _mymarker=[];
 
     _handelTap(LatLng tappedPoint){
         setState(() {
-          _mymarker=[]; 
+          _mymarker=[];
+          print(municioModel.localizacion);
+          print(municioModel.getLonLat()); 
           _mymarker.add(Marker(
             markerId: MarkerId(tappedPoint.toString()), 
             position: tappedPoint,
